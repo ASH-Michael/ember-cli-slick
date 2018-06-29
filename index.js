@@ -9,7 +9,7 @@ module.exports = {
 	},
 
   included: function(app) {
-		this._super.included.apply(this, arguments);
+		this._super.included(app);
 
     app.import('node_modules/slick-carousel/slick/slick.css');
     app.import('node_modules/slick-carousel/slick/slick-theme.css');
