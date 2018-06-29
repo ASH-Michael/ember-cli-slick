@@ -2,14 +2,14 @@
 const path = require('path');
 
 module.exports = {
-	name: 'ember-cli-slick',
+  name: 'ember-cli-slick',
 
   blueprintsPath: function() {
     return path.join(__dirname, 'blueprints');
 	},
 
   included: function(app) {
-		this._super.included.apply(this, arguments);
+		this._super.included(app);
 
     app.import('node_modules/slick-carousel/slick/slick.css');
     app.import('node_modules/slick-carousel/slick/slick-theme.css');
