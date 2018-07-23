@@ -8,19 +8,20 @@ module.exports = {
     return path.join(__dirname, 'blueprints');
 	},
 
-  included: function(app) {
-		this._super.included(app);
+  included: function(app, parentAddon) {
+		this._super.included.apply(this, arguments);
+    let target = (parentAddon || app);
 
-    app.import('node_modules/slick-carousel/slick/slick.css');
-    app.import('node_modules/slick-carousel/slick/slick-theme.css');
-    app.import('node_modules/slick-carousel/slick/fonts/slick.ttf', { destDir: 'assets/fonts' });
-    app.import('node_modules/slick-carousel/slick/fonts/slick.svg', { destDir: 'assets/fonts' });
-    app.import('node_modules/slick-carousel/slick/fonts/slick.eot', { destDir: 'assets/fonts' });
-    app.import('node_modules/slick-carousel/slick/fonts/slick.woff', { destDir: 'assets/fonts' });
-    app.import('node_modules/slick-carousel/slick/ajax-loader.gif', { destDir: 'assets' });
+    target.import('node_modules/slick-carousel/slick/slick.css');
+    target.import('node_modules/slick-carousel/slick/slick-theme.css');
+    target.import('node_modules/slick-carousel/slick/fonts/slick.ttf', { destDir: 'assets/fonts' });
+    target.import('node_modules/slick-carousel/slick/fonts/slick.svg', { destDir: 'assets/fonts' });
+    target.import('node_modules/slick-carousel/slick/fonts/slick.eot', { destDir: 'assets/fonts' });
+    target.import('node_modules/slick-carousel/slick/fonts/slick.woff', { destDir: 'assets/fonts' });
+    target.import('node_modules/slick-carousel/slick/ajax-loader.gif', { destDir: 'assets' });
 
     // import the above library into vendor.js that was merged with the vendor trees. In browser the library will be eval'd and run
     // In fastboot, the library will not be eval'd
-    app.import('node_modules/slick-carousel/slick/slick.js');
+    target.import('node_modules/slick-carousel/slick/slick.js');
   }
 };
